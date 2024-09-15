@@ -204,10 +204,10 @@ export const Home = () => {
       <Content>
         <Section className="greet">
           <Row gutter={32} align="middle">
-            <Col span={12}>
+            <Col md={{ span: 12 }} xs={{ span: 24 }}>
               <Img src="/bg1.png" />
             </Col>
-            <Col span={12}>
+            <Col md={{ span: 12 }} xs={{ span: 24 }}>
               <h1>FREE BNB EVERY HOUR!</h1>
               <p>Every hour, we give away up to 0.006 BNB for free through our BNB faucet. No frills, no hidden agenda – just a way to get you started with the incredible worldwide phenomena known as BNB and cryptocurrency.</p>
               <Input placeholder="E-mail Address" />
@@ -233,7 +233,7 @@ export const Home = () => {
               <h1>Product Features</h1>
             </Col>
             {featuresItems.map((data, i) =>
-              <Col span={12} key={i}>
+              <Col md={{ span: 12 }} xs={{ span: 24 }} key={i}>
                 <FeatureItem {...data} />
               </Col>
             )}
@@ -242,7 +242,7 @@ export const Home = () => {
         <Section className="summary">
           <Row gutter={32}>
             {summaryItems.map((data, i) =>
-              <Col span={8} key={i}>
+              <Col md={{ span: 8 }} xs={{ span: 24 }} key={i}>
                 <SummaryItem {...data} />
               </Col>
             )}
@@ -264,8 +264,8 @@ export const Home = () => {
       <Footer className="footer">
         <div className="footer-top">
           <div className="container">
-            <Row>
-              <Col span={6}>
+            <Row gutter={[16, 48]}>
+              <Col md={{ span: 6 }} xs={{ span: 12 }}>
                 <div className="footer-top-item">
                   <h3>Account</h3>
                   <div className="link">
@@ -276,7 +276,7 @@ export const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col span={6}>
+              <Col md={{ span: 6 }} xs={{ span: 12 }}>
                 <div className="footer-top-item">
                   <h3>Support</h3>
                   <div className="link">
@@ -287,7 +287,7 @@ export const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col span={6}>
+              <Col md={{ span: 6 }} xs={{ span: 12 }}>
                 <div className="footer-top-item">
                   <h3>Earn BNB</h3>
                   <div className="link">
@@ -298,7 +298,7 @@ export const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col span={6}>
+              <Col md={{ span: 6 }} xs={{ span: 12 }}>
                 <div className="footer-top-item">
                   <h3>Our websites:</h3>
                   <div className="link">
