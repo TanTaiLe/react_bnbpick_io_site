@@ -38,10 +38,19 @@ html {
   &-menu {
     background-color: transparent;
     border: none !important;
-    width: 50%;
     justify-content: flex-end;
 
+    @media(min-width: 375px) {
+      width: 40px;
+      height: 40px;
+    }
+
+    @media(min-width: 575px) {
+      width: 50%;
+    }
+
     .ant-menu {
+
       &-title-content {
         font-size: 16px;
         font-weight: 600;
@@ -63,7 +72,42 @@ html {
           display: none
         }
       }
+
+      &-overflow-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::after {
+          display: none;
+        }
+      }
     }
+  }
+}
+
+.ant-menu-submenu {
+
+  @media(min-width: 375px) {
+    width: 100% !important;
+  }
+
+  @media(min-width: 575px) {
+    width: unset !important;
+  }
+
+  .ant-menu-sub {
+
+    @media(min-width: 375px) {
+      width: 100% !important;
+      transform: translate(30px, 0px);
+    }
+
+    @media(min-width: 575px) {
+      width: unset !important;
+      transform: unset;
+    }
+
   }
 }
 
@@ -75,7 +119,7 @@ html {
     @media(min-width: 375px) {
       padding: 48px 0;
     }
-  
+
     @media(min-width: 768px) {
       padding: 80px 0;
     }
@@ -165,8 +209,16 @@ html {
 
   .ant-image {
     width: 80% !important;
-    margin: 0 auto;
     display: block;
+
+
+    @media(min-width: 375px) {
+      margin: 0 auto 24px;
+    }
+
+    @media(min-width: 768px) {
+      margin: 0 auto;
+    }
   }
 
   .ant-input {
@@ -175,9 +227,20 @@ html {
   }
 
   h1 {
-    font-size: 35px;
-    margin-bottom: 32px;
     color: #607d8b;
+
+
+    @media(min-width: 375px) {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 28px;
+    }
+
+    @media(min-width: 768px) {
+      text-align: left;
+      margin-bottom: 32px;
+      font-size: 35px;
+    }
   }
 
   p {
@@ -185,6 +248,15 @@ html {
     line-height: 25px;
     margin-bottom: 24px;
     color: #555;
+
+
+    @media(min-width: 375px) {
+      text-align: justify;
+    }
+
+    @media(min-width: 768px) {
+      text-align: left;
+    }
   }
 }
 

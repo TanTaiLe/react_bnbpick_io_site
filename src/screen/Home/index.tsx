@@ -4,6 +4,7 @@ import { Img } from "@component/DesignSystem/Img";
 import { Section } from "@component/DesignSystem/Section";
 import { Card, Col, Collapse, Input, Layout, Menu, Row, Typography } from "antd";
 import type { MenuProps, CollapseProps } from 'antd';
+import { MenuOutlined } from "@ant-design/icons";
 import { FC } from "react";
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -199,6 +200,7 @@ export const Home = () => {
           className="header-menu"
           mode="horizontal"
           items={items}
+          overflowedIndicator={<MenuOutlined style={{ fontSize: 24, color: '#fff' }} />}
         />
       </Header>
       <Content>
@@ -211,7 +213,7 @@ export const Home = () => {
               <h1>FREE BNB EVERY HOUR!</h1>
               <p>Every hour, we give away up to 0.006 BNB for free through our BNB faucet. No frills, no hidden agenda – just a way to get you started with the incredible worldwide phenomena known as BNB and cryptocurrency.</p>
               <Input placeholder="E-mail Address" />
-              <Row gutter={32}>
+              <Row gutter={16}>
                 <Col span={12}>
                   <Btn className="btn-green" block>Log in</Btn>
                 </Col>
