@@ -176,7 +176,7 @@ html {
   }
 
   @media(min-width: 1024px) {
-    max-width: 1024px !important;
+    max-width: 975px !important;
   }
 
   @media(min-width: 1200px) {
@@ -239,6 +239,9 @@ html {
     @media(min-width: 768px) {
       text-align: left;
       margin-bottom: 32px;
+    }
+
+    @media(min-width: 1024px) {
       font-size: 35px;
     }
   }
