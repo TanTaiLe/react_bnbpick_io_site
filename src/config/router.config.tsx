@@ -1,3 +1,4 @@
+import { Login } from "@screen/Account/Login";
 import { Home } from "@screen/Home";
 
 export interface IRouteConfig {
@@ -12,6 +13,12 @@ export const routes: Array<IRouteConfig> = [
     path: "/",
     component: (
       <Home />
+    ),
+  }, {
+    name: "legin",
+    path: "/login",
+    component: (
+      <Login />
     ),
   },
 

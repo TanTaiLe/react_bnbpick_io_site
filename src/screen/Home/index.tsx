@@ -2,12 +2,11 @@ import { Btn } from "@component/DesignSystem/Btn";
 import { Icon } from "@component/DesignSystem/Icon";
 import { Img } from "@component/DesignSystem/Img";
 import { Section } from "@component/DesignSystem/Section";
-import { Card, Col, Collapse, Input, Layout, Menu, Row, Typography } from "antd";
-import type { MenuProps, CollapseProps } from 'antd';
-import { MenuOutlined } from "@ant-design/icons";
+import { SiteLayout } from "@component/DesignSystem/SiteLayout";
+import { Card, Col, Collapse, Input, Row, Typography } from "antd";
+import type { CollapseProps } from 'antd';
 import { FC } from "react";
 
-type MenuItem = Required<MenuProps>['items'][number];
 
 interface FeaProps {
   icon: string
@@ -21,30 +20,7 @@ interface SumProps {
   caption: string
 }
 
-const { Header, Content, Footer } = Layout;
 const { Link } = Typography
-
-const items: MenuItem[] = [
-  {
-    label: 'Home',
-    key: 'home',
-  }, {
-    label: 'Login',
-    key: 'login',
-  }, {
-    label: 'Signup',
-    key: 'signup',
-  }, {
-    label: 'Payouts',
-    key: 'payouts',
-  }, {
-    label: 'Contact',
-    key: 'contact',
-  }, {
-    label: 'FAQ',
-    key: 'faq',
-  }
-]
 
 const featuresItems: FeaProps[] = [
   {
@@ -172,156 +148,65 @@ export const Home = () => {
     console.log(key);
   };
 
-  const onGetCurrentTime = () => {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    let mm = today.getMonth() + 1; // Months start at 0!
-    let dd = today.getDate();
-    let h = today.getHours();
-    let m = today.getMinutes()
-
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
-    if (h < 10) h = '0' + h;
-    if (m < 10) m = '0' + m;
-
-    const formattedToday = yyyy + '/' + mm + '/' + dd + ' ' + h + ':' + m;
-    return formattedToday
-  }
-
   return (
-    <Layout>
-      <Header className="header">
-
-        <Link className="header-logo">
-          <Img src="/logo.png" />
-        </Link>
-        <Menu
-          className="header-menu"
-          mode="horizontal"
-          items={items}
-          overflowedIndicator={<MenuOutlined style={{ fontSize: 24, color: '#fff' }} />}
-        />
-      </Header>
-      <Content>
-        <Section className="greet">
-          <Row gutter={32} align="middle">
-            <Col md={{ span: 12 }} xs={{ span: 24 }}>
-              <Img src="/bg1.png" />
-            </Col>
-            <Col md={{ span: 12 }} xs={{ span: 24 }}>
-              <h1>FREE BNB EVERY HOUR!</h1>
-              <p>Every hour, we give away up to 0.006 BNB for free through our BNB faucet. No frills, no hidden agenda – just a way to get you started with the incredible worldwide phenomena known as BNB and cryptocurrency.</p>
-              <Input placeholder="E-mail Address" />
-              <Row gutter={16}>
-                <Col span={12}>
-                  <Btn className="btn-green" block>Log in</Btn>
-                </Col>
-                <Col span={12}>
-                  <Btn className="btn-yellow" block>Sign up</Btn>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Section>
-        <Section className="feature">
-          <Row gutter={[32, 32]}>
-            <Col span={24}>
-              <div className="feature-trustpilot">
-                <Img src="/trustpilot_reviews.png" />
-              </div>
-            </Col>
-            <Col span={24}>
-              <h1>Product Features</h1>
-            </Col>
-            {featuresItems.map((data, i) =>
-              <Col md={{ span: 12 }} xs={{ span: 24 }} key={i}>
-                <FeatureItem {...data} />
+    <SiteLayout>
+      <Section className="greet">
+        <Row gutter={32} align="middle">
+          <Col md={{ span: 12 }} xs={{ span: 24 }}>
+            <Img src="/bg1.png" />
+          </Col>
+          <Col md={{ span: 12 }} xs={{ span: 24 }}>
+            <h1>FREE BNB EVERY HOUR!</h1>
+            <p>Every hour, we give away up to 0.006 BNB for free through our BNB faucet. No frills, no hidden agenda – just a way to get you started with the incredible worldwide phenomena known as BNB and cryptocurrency.</p>
+            <Input placeholder="E-mail Address" />
+            <Row gutter={16}>
+              <Col span={12}>
+                <Btn className="btn-green" block>Log in</Btn>
               </Col>
-            )}
-          </Row>
-        </Section>
-        <Section className="summary">
-          <Row gutter={32}>
-            {summaryItems.map((data, i) =>
-              <Col md={{ span: 8 }} xs={{ span: 24 }} key={i}>
-                <SummaryItem {...data} />
-              </Col>
-            )}
-          </Row>
-        </Section>
-        <Section className="faq">
-          <div className="faq-title">
-            <h1>What is Bnbpick.io?</h1>
-            <p>Bnbpick.io is an Free BNB faucet that enables users the ability to earn free BNB every hour. You are able solve captchas in order to accrue these litecoins.<br />
-              Bnbpick.io also provides a platform includes fair games that help you play to earn more BNB faster.</p>
-          </div>
-
-          <div className="faq-items">
-            <Collapse accordion items={faqItems} defaultActiveKey={['1']} onChange={onChange} />
-          </div>
-        </Section>
-      </Content>
-
-      <Footer className="footer">
-        <div className="footer-top">
-          <div className="container">
-            <Row gutter={[16, 48]}>
-              <Col md={{ span: 6 }} xs={{ span: 12 }}>
-                <div className="footer-top-item">
-                  <h3>Account</h3>
-                  <div className="link">
-                    <Link>Deposit</Link>
-                    <Link>Withdraw</Link>
-                    <Link>Settings</Link>
-                    <Link>Logout</Link>
-                  </div>
-                </div>
-              </Col>
-              <Col md={{ span: 6 }} xs={{ span: 12 }}>
-                <div className="footer-top-item">
-                  <h3>Support</h3>
-                  <div className="link">
-                    <Link>FAQ</Link>
-                    <Link>Contact</Link>
-                    <Link>Privacy Policy</Link>
-                    <Link>Terms of Service</Link>
-                  </div>
-                </div>
-              </Col>
-              <Col md={{ span: 6 }} xs={{ span: 12 }}>
-                <div className="footer-top-item">
-                  <h3>Earn BNB</h3>
-                  <div className="link">
-                    <Link>Multiply BNB</Link>
-                    <Link>Faucet</Link>
-                    <Link>Affiliates</Link>
-                    <Link>Gifts</Link>
-                  </div>
-                </div>
-              </Col>
-              <Col md={{ span: 6 }} xs={{ span: 12 }}>
-                <div className="footer-top-item">
-                  <h3>Our websites:</h3>
-                  <div className="link">
-                    <Link>Litepick.io</Link>
-                    <Link>Tronpick.io</Link>
-                    <Link>Dogepick.io</Link>
-                    <Link>Solpick.io</Link>
-                    <Link className="active">BNBpick.io</Link>
-                    <Link>Maticpick.io</Link>
-                    <Link>Tonpick.game</Link>
-                  </div>
-                </div>
+              <Col span={12}>
+                <Btn className="btn-yellow" block>Sign up</Btn>
               </Col>
             </Row>
-          </div>
+          </Col>
+        </Row>
+      </Section>
+      <Section className="feature">
+        <Row gutter={[32, 32]}>
+          <Col span={24}>
+            <div className="feature-trustpilot">
+              <Img src="/trustpilot_reviews.png" />
+            </div>
+          </Col>
+          <Col span={24}>
+            <h1>Product Features</h1>
+          </Col>
+          {featuresItems.map((data, i) =>
+            <Col md={{ span: 12 }} xs={{ span: 24 }} key={i}>
+              <FeatureItem {...data} />
+            </Col>
+          )}
+        </Row>
+      </Section>
+      <Section className="summary">
+        <Row gutter={32}>
+          {summaryItems.map((data, i) =>
+            <Col md={{ span: 8 }} xs={{ span: 24 }} key={i}>
+              <SummaryItem {...data} />
+            </Col>
+          )}
+        </Row>
+      </Section>
+      <Section className="faq">
+        <div className="faq-title">
+          <h1>What is Bnbpick.io?</h1>
+          <p>Bnbpick.io is an Free BNB faucet that enables users the ability to earn free BNB every hour. You are able solve captchas in order to accrue these litecoins.<br />
+            Bnbpick.io also provides a platform includes fair games that help you play to earn more BNB faster.</p>
         </div>
-        <div className="footer-bot">
-          <span>Server time: {onGetCurrentTime()}</span>
-          <strong>Copyright ©2023 All rights reserved | Bnbpick.io</strong>
+
+        <div className="faq-items">
+          <Collapse accordion items={faqItems} defaultActiveKey={['1']} onChange={onChange} />
         </div>
-      </Footer>
-    </Layout>
+      </Section>
+    </SiteLayout>
   );
 }
